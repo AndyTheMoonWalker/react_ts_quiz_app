@@ -5,7 +5,7 @@ import './App.css';
 import QuestionCard from './components/question-card.component';
 
 const TOTAL_Q = 10;
-type AnswerObject = {
+export type AnswerObject = {
 	question: string;
 	answer: string;
 	isCorrect: boolean;
@@ -47,7 +47,14 @@ function App() {
 			setUserAnswer((prev) => [...prev, answerObj]);
 		}
 	};
-	const nextQuestion = () => {};
+	const nextQuestion = () => {
+		const next = currentQuestionNumber + 1;
+		if (next === TOTAL_Q) {
+			setIsGameOver(true);
+		} else {
+			setCurrentQuestionNumber(next);
+		}
+	};
 
 	return (
 		<div className='App'>
@@ -74,7 +81,7 @@ function App() {
 			)}
 			{!isGameOver &&
 				!isLoading &&
-				currentQuestionNumber === userAnswer.length + 1 &&
+				currentQuestionNumber === userAnswer.length - 1 &&
 				currentQuestionNumber !== TOTAL_Q - 1 && (
 					<button className='button_next' onClick={nextQuestion}>
 						Next!
