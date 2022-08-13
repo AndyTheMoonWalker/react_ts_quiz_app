@@ -1,4 +1,5 @@
 import { AnswerObject } from '../App';
+import '../css/question-card.scss';
 type Props = {
 	questions: string;
 	answers: string[];
@@ -22,16 +23,30 @@ const QuestionCard: React.FC<Props> = ({
 			</p>
 			<p className='questionCardText'>{questions}</p>
 			<div className='questionCardAnswers'>
-				{answers.map((answer) => (
-					<button
-						disabled={!!userAnswer}
-						onClick={callback}
-						value={answer}
-						key={answer}
-					>
-						<span dangerouslySetInnerHTML={{ __html: answer }}></span>
-					</button>
-				))}
+				{answers.map((answer) => {
+					const isClickedCorrect =
+						userAnswer?.answer === answer && userAnswer?.isCorrect
+							? 'questionCardAnswerButton_correct'
+							: '';
+
+					const isUserClicked =
+						userAnswer?.answer === answer
+							? 'questionCardAnswerButton_clicked'
+							: '';
+
+					let classes = `questionCardAnswerButton ${isUserClicked} ${isClickedCorrect}`;
+					return (
+						<button
+							disabled={!!userAnswer}
+							onClick={callback}
+							value={answer}
+							key={answer}
+							className={classes}
+						>
+							<span dangerouslySetInnerHTML={{ __html: answer }}></span>
+						</button>
+					);
+				})}
 			</div>
 		</div>
 	);

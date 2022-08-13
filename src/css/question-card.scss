@@ -1,0 +1,57 @@
+.questionCard {
+	max-width: 800px;
+	padding: 20px;
+	border-radius: 10px;
+	margin: 10px auto;
+	box-shadow: 0px 2px 7px 1px rgba(0, 0, 0, 0.66);
+	background-color: rgba($color: #fff, $alpha: 0.2);
+
+	&Number {
+		font-size: 24px;
+	}
+
+	&Text {
+		font-size: 22px;
+	}
+
+	&Answers {
+		display: flex;
+		flex-flow: column;
+		justify-content: center;
+		align-items: center;
+	}
+
+	&AnswerButton {
+		padding: 5px 8px;
+		border-radius: 5px;
+		min-width: 200px;
+		cursor: pointer;
+		background-color: #eee;
+
+		&:hover {
+			background-color: #fff;
+		}
+
+		&_clicked {
+			background-color: red;
+		}
+		&_correct {
+			background-color: green !important;
+		}
+	}
+}
+
+.button_next {
+	padding: 10px 12px;
+	max-width: 100px;
+	border-radius: 5px;
+	border: 1px solid #fff;
+	margin: 0 auto;
+	background-color: rgba(1, 1, 1, 0.4);
+	cursor: pointer;
+	transition: all 0.3s ease;
+
+	&:hover {
+		opacity: 0.5;
+	}
+}

@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { fetchQuiz, Level, QuestionState } from './API/api';
 
-import './App.css';
 import QuestionCard from './components/question-card.component';
 
 const TOTAL_Q = 10;
@@ -36,7 +35,7 @@ function App() {
 			const isCorrect =
 				questions[currentQuestionNumber].correct_answer === answer;
 			if (isCorrect) {
-				setScore((prev) => (prev = +1));
+				setScore((prev) => (prev = prev + 1));
 			}
 			const answerObj = {
 				question: questions[currentQuestionNumber].question,
@@ -83,9 +82,9 @@ function App() {
 				!isLoading &&
 				currentQuestionNumber === userAnswer.length - 1 &&
 				currentQuestionNumber !== TOTAL_Q - 1 && (
-					<button className='button_next' onClick={nextQuestion}>
+					<div className='button_next' onClick={nextQuestion}>
 						Next!
-					</button>
+					</div>
 				)}
 		</div>
 	);
